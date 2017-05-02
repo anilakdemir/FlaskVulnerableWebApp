@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="container">	
+<br>
+<div class="well" style="background-color: #f2dede;">
+<h1 class="text-center">KURULUM</h1>
+</div>
+<br>
+    <div class="panel panel-danger">
+     	<div class="panel-heading"><p>Kullanılan Teknolojiler/Uygulamalar</p></div>
+      	<div class="panel-body">
+      	<ul>
+      		<li>Python 2.7</li>
+      		<li>SQLite</li>
+      		<li>virtualenv</li>
+      		<li>Flask Micro-Framework</li>
+      		<li>Jinja2 Templating Engine</li>
+      	</ul>
+      	</div>
+    </div>
+
+    <div class="panel panel-danger">
+    	<div class="panel-heading"><p>Kurulum Adımları</p></div>
+      	<div class="panel-body">
+      		<ul>
+      			<li><b>Uygulama Windows, GNU/Linux ve MacOS işletim sistemlerinde çalışabilir. Aşağıda anlatılan kurulum MacOS içindir. Diğer işletim sistemlerinde farklılık gösterebilir.</b></li>
+	      		<li>Python dili ile geliştirme yapabilmek için aşağıdaki linkten Python 2.7 indirip kulumunu yapınız.</li>
+	      		<li class="text-justify"><a hfref="https://www.python.org/downloads/">Python 2.7 indirmek için tıklayınız.</a></li>
+	      		<li class="text-justify">Kurulumu tamamladıktan sonra terminali açınız.</li>
+	      		<li class="text-justify">Terminale 'python' yazarak kurulumun başarılı olduğunu kontrol ediniz.</li>
+	      		<br>
+	      		<img style="max-width: 500px" src="static/term01.png">
+	      		<br>
+	      		<li class="text-justify">Yukarıdaki gibi bir görüntüyle karşılaşıyorsanız kurulum başarılı demektir. 'exit()' komutu ile çıkış yapabilirsiniz.</li>
+	      		<li>Terminale 'pip install virtualenv' yazarak virtualenv kurulumunu gerçekleştiriniz.</li>
+	      		<li>Kurulum gerçekleştikten sonra Terminalden proje dosyasının yoluna geliniz. ( Terminalde 'cd' komutunu kullanabilirsiniz.)</li>
+	      		<li>Ortamı aktifleştirmek için terminale dosyanın içerisindeyken 'source env/bin/activate' komutunu giriniz.</li>
+	      		<li>Aşağıdaki gibi bir görüntüyle karşılaşıyorsanız ortamı aktif ettiniz demektir. Satıra '(env)' ifadesi eklenir.</li>
+	      		<br>
+	      		<img style="max-width: 500px" src="static/term02.png">
+	      		<br>
+	      		<li>Virtualenv başarıyla aktif edildikten sonra, terminale 'pip install flask' komutunu girerek Flask için gerekli modüllerin kurulmasını sağlayabilirsiniz. Jinja2 ve SQLite3 Flask ile birlikte kurulu olarak gelecektir.</li>
+	      		<li>Son olarak projeyi çalıştırmak için terminale dosya dizininde iken 'python app.py' yazmanız yeterli olacaktır.</li>
+	      		<li>Projeye 'http://localhost:8080/' adresinden ulaşabilirsiniz.</li>
+	      		<li><b>Uyarı:</b> Projenin çalışması için terminali kapatmamalısınız.</li>
+			</ul>
+
+      	</div>
+    </div>
+
+    <div class="panel panel-danger">
+    	<div class="panel-heading"><p>Veritabanında Gerekli Tabloların Oluşturulması</p></div>
+      	<div class="panel-body">
+      		<ul>
+      			<li>Uygulamada veritabanı olarak SQLite kullanılmıştır.</li>
+      			<li>Uygulama dizini içerisinde örnek veritabanı bulunmaktadır. Silip yeniden oluşturmak istenildiği takdirde aşağıdaki adımlar takip edilebilir.</li>
+      			<li>Uygulama çalıştığında uygulamanın bulunduğu dizinde veritabanı 'database.db' ismiyle otomatik olarak oluşmaktadır.</li>
+      			<li>Uygulama kullanılmadan önce oluşan veritabanında gerekli tablolar oluşturulmalıdır. Aksi halde 'SQL Enjeksiyon' ve 'XSS' sayfalarında hata ile karşılaşılacaktır.</li>
+      			<li>Tabloları oluşturma işlemi için 3. parti uygulama kullanımı tavsiye edilmektedir. (<a href="http://sqlitebrowser.org">DB Browser for SQLite</a>)</li>
+      			<li>Uygulamanın arayüzü aşağıdaki gibidir.</li>
+      			<br>
+      			<img class="img-responsive" style="max-width: 600px" src="static/DBBrowser01.png"></img>
+      			<br>
+      			<li>Arayüzden 'Open Database' seçeneğini seçerek uygulama dizinindeki 'database.db' veritabanı açılır.</li>
+      			<br>
+      			<img class="img-responsive" style="max-width: 600px" src="static/DBBrowser02.png"></img>
+      			<br>
+      			<li>Uygulamanın 'File' sekmesinden önce 'Import' seçeneği, ardından 'Database from SQL File...' seçeneği seçilir.</li>
+      			<br>
+      			<img class="img-responsive" style="max-width: 600px" src="static/DBBrowser03.png"></img>
+      			<br>
+      			<li>Açılan pencereden uygulama dizini içerisindeki 'veritabani.sql' dosyası seçilir ve gelen seçime 'Hayır' yanıtı verilir.</li>
+      			<br>
+      			<img class="img-responsive" style="max-width: 500px" src="static/DBBrowser04.png"></img>
+      			<br>
+      			<li>Son olarak yapılan işlemlerin veritabanın kayıt edilmesi için arayüzden 'Write Changes' butonuna tıklanır.</li>
+      			<li>Uygulama için gerekli olan tabloların başarıyla oluşturulduğundan emin olunduktan sonra uygulama kullanılmaya başlanabilir.</li>
+
+
+			</ul>
+
+      	</div>
+    </div>
+</div>
+
+{% endblock body %}

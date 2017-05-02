@@ -1,0 +1,17 @@
+BEGIN TRANSACTION;
+CREATE TABLE IF NOT EXISTS "yorumlar" (
+	`id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	`yorum`	TEXT NOT NULL,
+	`yazar`	TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS "uyeler" (
+	`id`	INTEGER PRIMARY KEY AUTOINCREMENT,
+	`kullanici`	TEXT NOT NULL UNIQUE,
+	`sifre`	TEXT NOT NULL,
+	`yas`	INTEGER,
+	`boy`	INTEGER,
+	`kilo`	NUMERIC,
+	`tc`	INTEGER
+);
+INSERT INTO `uyeler` (id,kullanici,sifre,yas,boy,kilo,tc) VALUES (1,'anil','123',22,175,82,11111111111);
+COMMIT;

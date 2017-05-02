@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <title>Zayıf Web Uygulaması</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style type="text/css">
+    
+    body{
+      background-color: #f0f5f5;
+    }
+
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand">Zayıf Web Uygulaması</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="/">Anasayfa</a></li>
+      <li><a href="/kurulum">Kurulum</a></li>
+      <li><a href="/sqlenjeksiyon">SQL Enjeksiyon</a></li>
+      <li><a href="/xss">XSS</a></li>
+      <li><a href="/komutenjeksiyon">Komut Enjeksiyon</a></li>
+      <li><a type="button" class="btn" data-toggle="modal" data-target="#myModal">Yardım</a></li>
+    </ul>
+  </div>
+</nav>
+
+{% block body%}{% endblock %}
+
+{% block yardim %}{% endblock %}
+
+</body>
+</html>

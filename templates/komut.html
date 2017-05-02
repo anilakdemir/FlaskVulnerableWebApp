@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="container">
+	<div class="panel panel-danger">
+		<div class="panel-heading"><p>Ping Atılacak Adres</p></div>
+		<div class="panel-body">
+			<form action="/komutenjeksiyon" method="GET">
+				<div class="form-group">
+					<input type="text" class="form-control" id="delete" name="adres" required="">
+				</div>
+				<button type="submit" class="btn btn-info pull-right">Ping</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+{% if sonuc %}
+<br><br><br>
+<div class="container">
+	<div class="panel panel-danger">
+		<div class="panel-heading"><p>Sonuç</p></div>
+		<div class="panel-body">
+			{{ sonuc }}
+		</div>
+	</div>
+	
+</div>
+{% endif %}
+
+{% endblock body %}
+
+
+{% block yardim %}
+<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal-dialog modal-lg">
+		
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Komut Enjeksiyon Yardım</h4>
+			</div>
+			<div class="modal-body">
+				<h3>Açıklama </h3>
+				<br>
+				<p>Command Injection, yani komut enjeksiyonu saldırganın zafiyet barındıran bir uygulama üzerinden hedef sistemde dilediği komutları çalıştırabilmesine denir. Komut ile kastedilen şey Windows'ta CMD ve Linux'ta Terminal pencerelerine girilen sistem komutlarıdır. Literatürde Shell kodlaması diye de geçer. Command Injection saldırısı büyük oranda yetersiz input denetleme mekanizması nedeniyle gerçekleşmektedir.</p>
+					<br>
+					<h3>Açığın Oluşma Sebebi</h3>
+					<br>
+					<img class="img-responsive" src="static/komut01.png">
+					<h3>Açığı Sömürü</h3>
+					<br>
+					<ul>
+						<li>Adres: <b>localhost; ls;</b></li>
+						<li>Adres: <b>localhost; cat /etc/passwd;</b></li>
+						<li>Adres: <b>localhost; echo $PATH;</b></li>
+						<li>Adres: <b>localhost; cd ..; cd..; cd ..; ls;</b></li>
+						<li><b>http://localhost:8080/komutenjeksiyon?adres=localhost%3B+cat+%2Fetc%2Fpasswd%3B</b></li>
+						<li><b>http://localhost:8080/komutenjeksiyon?adres=localhost%3B+echo+%24PATH%3B</b></li>
+					</ul>
+					<br>
+					<h3>Açığın Kapatılması</h3>
+					<br>
+					<img class="img-responsive" src="static/komut02.png">
+					
+					<br>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	{% endblock %}
